@@ -41,3 +41,8 @@ An interactive sales analytics dashboard built using Microsoft Power BI to analy
 
 ## Author
 Aspiring Data Analyst | Computer Science (AI & ML)
+
+## Power BI Dashboard
+
+![Superstore Sales Analytics Dashboard](superstore_dashboard.png.png)
+
