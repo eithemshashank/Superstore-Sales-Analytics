@@ -24,6 +24,7 @@ data/raw/superstore_raw.xlsx
    -> data/processed/superstore_clean.csv
    -> scripts/eda.py              KPIs, monthly trend, category / region / top-product summaries, charts
    -> reports/*.csv, reports/charts/*.png
+   -> scripts/profit_discount_analysis.py   profit by sub-category, discount bands, top / bottom products
    -> scripts/import_to_mysql.py  validate the CSV and load it into MySQL
    -> sql/business_questions.sql  17 business questions
    -> powerbi/Superstore_Sales_Dashboard.pbix
@@ -47,6 +48,18 @@ All figures come from `data/processed/superstore_clean.csv` and can be reproduce
 
 The Power BI dashboard (`powerbi/Superstore_Sales_Dashboard.pbix`) shows total sales, total profit, total orders and profit margin, a monthly sales trend, and sales by region, category and sub-category, with category and region slicers.
 
+## Profit and discount analysis
+
+Made with Python (`scripts/profit_discount_analysis.py`), as an extra view alongside the Power BI dashboard.
+
+![Profit by sub-category](reports/charts/profit_by_subcategory.png)
+
+![Total profit by discount band](reports/charts/profit_by_discount_band.png)
+
+![Top and bottom 10 products by profit](reports/charts/top_bottom_products.png)
+
+![Discount vs profit, every order line](reports/charts/discount_vs_profit.png)
+
 ## SQL highlights
 
 `sql/business_questions.sql` covers KPIs, category / region / segment performance, loss-making products and sub-categories, discount bands, and window-function queries: month-over-month and year-over-year growth with `LAG()`, and top 3 products per category with `ROW_NUMBER()`. Window functions need MySQL 8 or later.
@@ -56,7 +69,7 @@ The Power BI dashboard (`powerbi/Superstore_Sales_Dashboard.pbix`) shows total s
 ```
 data/raw/            original Excel file
 data/processed/      cleaned CSV
-scripts/             clean_data.py, eda.py, import_to_mysql.py
+scripts/             clean_data.py, eda.py, profit_discount_analysis.py, import_to_mysql.py
 sql/                 schema.sql, business_questions.sql
 reports/             summary CSVs and charts from eda.py
 powerbi/             .pbix dashboard and DAX reference
@@ -67,7 +80,7 @@ images/              dashboard screenshot
 
 1. Install the dependencies: `pip install -r requirements.txt`
 2. Clean the data: `python scripts/clean_data.py`
-3. Run the EDA: `python scripts/eda.py`
+3. Run the EDA: `python scripts/eda.py`, then `python scripts/profit_discount_analysis.py`
 4. Create the database and table in MySQL: run `sql/schema.sql`
 5. Load the data: `python scripts/import_to_mysql.py` (asks for your MySQL root password)
 6. Run the queries in `sql/business_questions.sql`
