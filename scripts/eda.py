@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 ROOT = Path(__file__).resolve().parents[1]
 
 INPUT_FILE = (
-    ROOT / "data" / "raw" / "Superstore_Sales_Analysis  (1).xlsx"
+    ROOT / "data" / "raw" / "superstore_raw.xlsx"
 )
 REPORT_DIR = ROOT / "reports"
 CHART_DIR = REPORT_DIR / "charts"
@@ -19,8 +19,8 @@ CHART_DIR.mkdir(parents=True, exist_ok=True)
 
 if not INPUT_FILE.exists():
     raise FileNotFoundError(
-        f"Cleaned dataset not found: {INPUT_FILE}\n"
-        "Run scripts/clean_data.py first."
+        f"Raw file not found: {INPUT_FILE}\n"
+        "Place superstore_raw.xlsx inside data/raw/"
     )
 
 

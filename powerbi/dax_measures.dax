@@ -1,0 +1,14 @@
+// Reference DAX for the four KPI cards on the dashboard.
+// Table name assumed: superstore_clean. Adjust to your model's table name
+// and compare with the measures inside Superstore_Sales_Dashboard.pbix.
+
+Total Sales = SUM(superstore_clean[sales])
+
+Total Profit = SUM(superstore_clean[profit])
+
+Profit Margin % = DIVIDE([Total Profit], [Total Sales])
+
+// Distinct orders (the data has 9,994 rows but 5,009 orders)
+Total Orders = DISTINCTCOUNT(superstore_clean[order_id])
+
+Avg Order Value = DIVIDE([Total Sales], [Total Orders])

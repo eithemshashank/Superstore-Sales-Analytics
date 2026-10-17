@@ -6,7 +6,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 
 INPUT_FILE = (
-    ROOT / "data" / "raw" / "Superstore_Sales_Analysis  (1).xlsx"
+    ROOT / "data" / "raw" / "superstore_raw.xlsx"
 )
 OUTPUT_DIR = ROOT / "data" / "processed"
 OUTPUT_FILE = OUTPUT_DIR / "superstore_clean.csv"
@@ -14,8 +14,8 @@ OUTPUT_FILE = OUTPUT_DIR / "superstore_clean.csv"
 # Load the dataset
 if not INPUT_FILE.exists():
     raise FileNotFoundError(
-        f"CSV file not found: {INPUT_FILE}\n"
-        "Place superstore.csv inside data/raw/"
+        f"Raw file not found: {INPUT_FILE}\n"
+        "Place superstore_raw.xlsx inside data/raw/"
     )
 
 df = pd.read_excel(INPUT_FILE)
